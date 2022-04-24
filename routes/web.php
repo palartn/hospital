@@ -5,9 +5,13 @@ use App\Http\Controllers\Admin\Admincontroller;
 
 
 Route::get('/', function () {
-    return 'HomePage';})->name('homepage');;
+    return view('home');})->name('homepage');;
 
 Route::prefix('admin')->name('admin.')->group(function(){
 Route::get('',[Admincontroller::class,'index'])->name('index');
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
